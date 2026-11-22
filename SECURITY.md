@@ -1,0 +1,4 @@
+# Security & Privacy Notes – v1.6.0
+Static client-side app: no backend, DB, accounts, cookies, uploads (those controls are not applicable). Build adds strict CSP (script by SHA-256 hash, no network, no forms, no base). Only dev dependency: esbuild (run `npm audit`; CI runs it). No external scripts/fonts/images. City/country whitelisted before use; links use noopener noreferrer + no-referrer; data in localStorage (`pxc`, `pxs`) is only country/city/display settings. Clicking links sends search words to third parties (disclosed in-app).
+Residual risks: `style-src 'unsafe-inline'`; localStorage shared per origin (use custom domain); third-party sites log queries; pharmacy/site links unverified; no pen-test. No compliance claimed. Rebuild after every script change (hash is automatic).
+Sex preference is stored locally in pxs and only appears in text the user chooses to copy.
